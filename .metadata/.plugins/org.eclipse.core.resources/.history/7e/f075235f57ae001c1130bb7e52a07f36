@@ -1,0 +1,42 @@
+package com.test;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.Scanner;
+
+import com.util.DBConn;
+
+public class ScoreDAO
+{
+	private Connection conn;
+	
+	public Connection connection() throws ClassNotFoundException, SQLException
+	{
+		conn = DBConn.getConnection();
+		return conn;
+	}
+	
+	
+	// 성적 입력 메소드
+	public int add(ScoreDTO dto) throws SQLException
+	{
+		Scanner sc = new Scanner(System.in);
+		
+		int result = 0;
+		
+		String sql = "INSERT INTO TBL_SCORE(SID, NAME, KOR, ENG, MAT)"
+				  + " VALUES(SCORESEQ.NEXTVAL, ?, ?, ?, ?)";
+		
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, dto.getName());
+		pstmt.setInt(2, dto.getKor());
+		pstmt.setInt(3, dto.getEng());
+		pstmt.setInt(4, dto.getMat());
+		
+		result = pstmt.executeUpdate();
+		
+		
+		return result;
+	}
+}

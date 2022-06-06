@@ -1,0 +1,117 @@
+/*=====================================
+ * MemberDAO.java
+ * - 데이터베이스 액션 처리 전용 클래스
+ =====================================*/
+// Data Access Object
+
+package com.test;
+
+import java.sql.Connection;
+
+import com.util.DBConn_copy;
+
+public class MemberDAO_copy
+{
+	// DB연결부터..
+	private Connection conn; // Conneciton 인터페이스의 conn 변수 선언
+	
+
+	
+	
+	public Connection connection()
+	{
+		conn = DBConn_copy.getConnection();
+		return conn;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,112 @@
+package com.test;
+
+import java.util.Scanner;
+
+public class ScoreProcess
+{
+	private ScoreDAO dao;
+	
+	public ScoreProcess()
+	{
+		dao = new ScoreDAO();
+	}
+	
+	
+	// 성적 입력 기능
+	public void sungjukInsert()
+	{
+		try
+		{
+			// 데이터베이스 연결
+			dao.connection();
+			
+			// 레코드 수 확인
+			int count = dao.count();
+			
+			Scanner sc = new Scanner(System.in);
+			
+			do
+			{
+				System.out.println();
+				System.out.printf("%d번 학생 성적 입력(이름 국어 영어 수학) : ", (++count));
+				String name = sc.next();
+				
+				if (name.equals("."))
+				{
+					break;
+				}
+				
+				int kor = sc.nextInt();
+				int eng = sc.nextInt();
+				int mat = sc.nextInt();
+				
+				// 입력받은 값을 토대로 ScoreDTO 에 넘겨주기
+				ScoreDTO dto = new ScoreDTO();
+				
+				dto.setName(name);
+				dto.setKor(kor);
+				dto.setEng(eng);
+				dto.setMat(mat);
+				
+				int result = dao.add(dto);
+				
+				if (result > 0)
+				{
+					System.out.println("성적 입력이 완료되었습니다.");
+				}
+			
+				
+			} while (true);
+			
+			
+			
+			
+			
+			
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

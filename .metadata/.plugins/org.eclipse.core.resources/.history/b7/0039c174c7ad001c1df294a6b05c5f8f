@@ -1,0 +1,142 @@
+/*==========================================
+ * Process.java
+ * - 콘솔 기반 서브 메뉴 입출력 전용 클래스
+ ==========================================*/
+
+
+package com.test;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+
+public class MemberProcess_copy
+{
+	// 주요 속성 구성.
+	// Process 는 DAO 를 바탕으로 실질적인 콘솔 처리가 이루어지는 부분
+	private MemberDAO_copy dao;
+	
+	// 생성자 정의
+	public MemberProcess_copy()
+	{
+		dao = new MemberDAO_copy();
+	}
+	
+	
+	// 직원 정보 입력 메소드 정의
+	public void memberInsert()
+	{
+		Scanner sc = new Scanner(System.in);
+		
+		try
+		{
+			dao.connection(); // dao는 memberDAO 인스턴스 객체임 .connection으로 접근해서 데이터베이스 연결함
+			
+			// 지역 리스트 구성
+			ArrayList<String> citys = dao.seachCity();
+			StringBuilder citysStr = new StringBuilder();
+			// StringBuilder 는 String과 문자열을 더할 때 새로운 객체를 생성하는 것이 아니라 기존의 데이터에 더하는 방식이기 때문에 속도가 빠르다
+			for (String city : citys)
+			{
+				citysStr.append(city + "/");
+			}
+			
+			// 부서 리스트 구성
+			ArrayList<String> buseos = dao.searchBuseo();
+			StringBuilder buseoStr = new StringBuilder();
+			for (String buseo : buseos)
+			{
+				buseoStr.append(buseo + "/");
+			}
+			
+			// 직위 리스트 구성
+			ArrayList<String> jikwis = dao.searchjikwi();
+			StringBuilder jikwiStr = new StringBuilder();
+			for (String jikwi : jikwis)
+			{
+				jikwiStr.append(jikwi + "/");
+			}
+			
+			System.out.println();
+			System.out.println("직원 정보 입력 ----------------------------------------------------------");
+			
+			System.out.print("이름 : ");
+			String empName = sc.next();
+			
+			System.out.print("주민등록번호(yymmdd-nnnnnn) : ");
+			String ssn = sc.next();
+			
+			System.out.print("입사일(yyyy-mm-dd) : ");
+			String ibsaDate = sc.next();
+			
+			System.out.printf("지역(%s) : ", citysStr.toString()); // toString 메소드는 객체가 가지고 있는 정보나 값들을 문자열로 만들어 리턴하는 메소드
+			String cityName = sc.next();
+			
+			System.out.print("전화번호 : ");
+			String tel = sc.next();
+			
+			System.out.printf("부서(%s) : ", buseoStr.toString());
+			String buseo = sc.next();
+			
+			System.out.printf("직위 (%s) : ", jikwiStr.toString());
+			String jikwi = sc.next();
+			
+			System.out.printf("기본급(최소 %d원 이상) : ", dao.searchBasicPay(jikwiName));
+			int basicPay = sc.nextInt();
+			
+			System.out.print("수당 : ");
+			int sudang = sc.nextInt();
+			
+			System.out.println();
+			
+			System.out.println("직원 정보 입력 완료                                                        ");
+			System.out.println("---------------------------------------------------------- 직원 정보 입력");
+			
+			
+			
+			
+			
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

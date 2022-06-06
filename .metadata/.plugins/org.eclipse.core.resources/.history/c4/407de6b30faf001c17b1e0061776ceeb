@@ -1,0 +1,75 @@
+/*==================================================
+ * Test002.java
+ * - CallableStatement 를 활용한 SQL 구문 전송 실습
+ ==================================================*/
+
+
+package com.test;
+
+import java.sql.Connection;
+
+import com.util.DBConn;
+
+public class Test002
+{
+	public static void main(String[] args)
+	{
+		try
+		{
+			Connection conn = DBConn.getConnection();
+			
+			
+			
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
